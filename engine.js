@@ -13,6 +13,8 @@ class Engine {
         this.output = document.body.appendChild(document.createElement("div"));
         this.actionsContainer = document.body.appendChild(document.createElement("div"));
 
+        this.player = new Player(this);
+
         fetch(storyDataUrl).then(
             (response) => response.json()
         ).then(
@@ -62,5 +64,39 @@ class Scene {
 
     handleChoice(action) {
         console.warn('no choice handler on scene ', this);
+    }
+}
+
+class Player {
+    constructor(engine) {
+        this.engine = engine;
+        this.inventory = {};
+        this.tags = [];
+    }
+
+    addItem(item, amount) {
+        if(this.inventory[item] == undefined) {
+            this.inventory[item] = amount;
+        }
+        else {
+            this.inventory[item] += amount;
+        }
+    }
+
+    getItemAmount(item) {
+        if (this.inventory[item] != undefined) {
+            return this.inventory[item];
+        }
+        else {
+            return 0;
+        }
+    }
+
+    addTag(tag) {
+        this.tags.push(tag);
+    }
+
+    checkTag(tag) {
+        return this.tags.includes(tag);
     }
 }

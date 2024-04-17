@@ -1,58 +1,163 @@
 {
-    "Title": "Campus Life on the West Side",
-    "Credits": "Created by Adam Smith (amsmith@ucsc.edu).",
-    "InitialLocation": "Kresge",
+    "Title": "A Glassy Night's Walk",
+    "Credits": "Created by Ian Stentz",
+    "InitialLocation": "Office",
     "Locations": {
-        "Kresge": {
-            "Body": "This is Kresge College, lots of nice trees.",
+        "Office": {
+            "Body": "<b>Office</b><br>You step out from your office building, the skyscraper towering behind you. You realized you had stayed late, but are still surprised by the night sky; the moon is looming directly above you. The city is sprawling with life, people are moving about as normal, although late as it is there's far fewer than usual. As you start to feel the chill in the air, you decide it is best to start your walk home, same as always, by taking a shortcut through the nearby alleyway.",
             "Choices": [
                 {
-                    "Text": "South",
-                    "Target": "Porter"
+                    "Text": "Take the shortcut",
+                    "Target": "Alleyway Shortcut"
                 }
             ]
         },
-        "Porter": {
-            "Body": "This is Porter College, the trees are nice here too.",
+        "Alleyway Shortcut": {
+            "Body": "<b>Alleyway</b><br>",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Kresge"
+                    "Text": "Continue through",
+                    "Target": "Strange Road"
+                }
+            ]
+        },
+        "Strange Road": {
+            "Body": "<b>Strange Road</b><br>",
+            "Choices": [
+                {
+                    "Text": "Set up the mirrors",
+                    "Target": "Home",
+                    "Condition": "Have Mirrors"
                 },
                 {
-                    "Text": "South",
-                    "Target": "Rachel Carson"
-                }
-            ]
-        },
-        "Rachel Carson": {
-            "Body": "Rachel Carson College, more sun and fewer trees.",
-            "Choices": [
-                {
-                    "Text": "North",
-                    "Target": "Porter"
+                    "Text": "Towards home?",
+                    "Target": "City Square"
                 },
                 {
-                    "Text": "South",
-                    "Target": "Oakes"
+                    "Text": "Back to the office?",
+                    "Target": "Alleyway?"
                 }
             ]
         },
-        "Oakes": {
-            "Body": "Oakes College, even the buildings have tree bark on them.",
+        "Alleyway?": {
+            "Body": "<b>Alleyway?</b><br>",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Rachel Carson"
+                    "Text": "Back to the Office?",
+                    "Target": "Office?"
                 },
                 {
-                    "Text": "South",
-                    "Target": "Beyond"
+                    "Text": "Back to Strange Road",
+                    "Target": "Strange Road"
                 }
             ]
         },
-        "Beyond": {
-            "Body": "Grass, don't forget to check for ticks!"
+        "Office?": {
+            "Body": "<b>Office?</b><br>",
+            "Choices": [
+                {
+                    "Text": "Collect Mirror",
+                    "Target": "Mirror Collection",
+                    "Condition": "Know Mirrors" 
+                },
+                {
+                    "Text": "to Alleyway?",
+                    "Target": "Alleyway?"
+                }
+            ]
+        },
+        "Mirror Collection": {
+            "Body": "<b>Collected Mirror!</b><br>",
+            "Items": {
+                "Name": "Starch",
+                "Amount": 1
+            },
+            "Choices": [
+                {
+                    "Text": "Continue",
+                    "Target": "Office?"
+                }
+            ]
+        },
+        "City Square": {
+            "Body": "<b>City Square</b><br>", 
+            "Choices": [
+                {
+                    "Text": "Back to Strange Road",
+                    "Target": "Strange Road"
+                },
+                {
+                    "Text": "To the Winding Roads",
+                    "Target": "The Winding Roads",
+                    "Type": "RandomExit"
+                }
+            ]
+        },
+        "The Winding Roads": {
+            "Body": "<b>The Winding Roads</b><br>",
+            "Choices": [
+                {
+                    "Text": "You find yourself at...",
+                    "Targets": [
+                        "The Bakery?",
+                        "Home?",
+                        "The Weeping Spire"
+                    ]
+                }
+            ]
+        },
+        "The Bakery?": {
+            "Body": "<b>Bakery</b><br>",
+            "Choices": [
+                {
+                    "Text": "Get Starch",
+                    "Target": "Starch Collect",
+                    "Condition": "Starchless Condition"
+                },
+                {
+                    "Text": "Return to City Square",
+                    "Target": "City Square"
+                }
+            ]
+        },
+        "Starch Collect": {
+            "Body": "<b>Collected Starch!</b><br>",
+            "Items": {
+                "Name": "Starch",
+                "Amount": 1
+            },
+            "Choices": [
+                {
+                    "Text": "Continue",
+                    "Target": "The Bakery?"
+                }
+            ]
+        },
+        "Home?": {
+            "Body": "<b>Home?</b><br>",
+            "Choices": [
+                {
+                    "Text": "Return to City Square",
+                    "Target": "City Square"
+                }
+            ]
+        },
+        "The Weeping Spire": {
+            "Body": "<b>The Weeping Spire</b><br>",
+            "Choices": [
+                {
+                    "Text": "Return to City Square",
+                    "Target": "City Square"
+                }
+            ]
+        },
+        "Home": {
+            "Body": "<b>Home.</b><br>"
+        }
+    },
+    "Dialogue": {
+        "Stranger": {
+
         }
     }
 }

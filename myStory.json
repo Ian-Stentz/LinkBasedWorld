@@ -1,5 +1,5 @@
 {
-    "Title": "A Glassy Night's Walk",
+    "Title": "A Glassy Night's Walk (WORK IN PROGRESS, I KNOW IT'S SUBMITTED I JUST WANTED TO NOT WORRY ABOUT FORGETTING)",
     "Credits": "Created by Ian Stentz",
     "InitialLocation": "Office",
     "Locations": {
@@ -136,9 +136,9 @@
             ]
         },
         "The Bakery?": {
-            "Body": "<b>Bakery</b><br>",
+            "Body": "<b>Bakery</b><br>Text",
             "AltBody": {
-                "Text": "<b>Bakery</b><br>",
+                "Text": "<b>Bakery</b><br>Alt Text",
                 "Condition": "Starch Collected"
             },
             "Choices": [

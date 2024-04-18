@@ -13,37 +13,48 @@ class Location extends Scene {
     create(key) {
         let locationData = this.engine.storyData.Locations[key];
         this.engine.show(locationData.Body);
-        //this.handleItems(locationData);
-        this.handleFlags(locationData);
+        this.handleItems(locationData);
+        this.handleTags(locationData);
 
         if(locationData.Choices !== undefined) {
             for(let choice of locationData.Choices) {
-                this.engine.addChoice(choice.Text, choice);
+                if(choice.Condition == undefined || this.conditionSatisfied(choice.Condition)) {
+                    this.engine.addChoice(choice.Text, choice);
+                }
             }
         } else {
             this.engine.addChoice("The end.")
         }
     }
 
-    handleItems(locationData) {
-        if(locationData["Items"] != undefined) {
 
+    conditionSatisfied(condition) {
+        switch(condition) {
+            case "Have Mirrors":
+                return this.engine.player.getItemAmount("mirrora") >= 1 && this.engine.player.getItemAmount("mirrorb") >= 1;
+            case "Know Mirrors":
+                return this.engine.player.checkTag("Know Mirrors");
+            case "Starchless Condition":
+                //console.log(this.engine.player.getItemAmount("starch"));
+                return this.engine.player.getItemAmount("starch") == 0;
+            default:
+                console.log("Unknown condition");
+                return;        
         }
     }
 
-    handleFlags(locationData) {
-        if(locationData["Flags"] != undefined) {
-            for(let flag of locationData.Flags) {
-                switch(flag) {
-                    case "Collected Mirror A":
-                        this.engine.inventory.addItem("mirror", 1);
-                        break;
-                    case "Collected Mirror B":
-                        this.engine.inventory.addItem("mirror", 1);
-                        break;
-                    default:
-                        console.log("unregistered flag detected");
-                }
+    handleItems(locationData) {
+        if(locationData.Items != undefined) {
+            for(let item of locationData["Items"]) {
+                this.engine.player.addItem(item.Name, item.Amount);
+            }
+        }
+    }
+
+    handleTags(locationData) {
+        if(locationData["Tags"] != undefined) {
+            for(let tag of locationData.Tags) {
+                this.engine.player.addTag(tag);
             }
         }
     }
@@ -96,7 +107,7 @@ class RandomExitLoc extends Location {
                 default:
                     this.engine.gotoScene(Location, choice.Target);
             }
-            
+
         } else {
             this.engine.gotoScene(End);
         }

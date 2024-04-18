@@ -66,16 +66,33 @@
                 }
             ]
         },
-        "Mirror Collection": {
+        "Mirror A Collection": {
             "Body": "<b>Collected Mirror!</b><br>",
-            "Items": {
-                "Name": "Starch",
+            "Items": [
+                {
+                "Name": "mirrora",
                 "Amount": 1
-            },
+                }
+            ],
             "Choices": [
                 {
                     "Text": "Continue",
                     "Target": "Office?"
+                }
+            ]
+        },
+        "Mirror B Collection": {
+            "Body": "<b>Collected Mirror!</b><br>",
+            "Items": [
+                {
+                "Name": "mirrorb",
+                "Amount": 1
+                }
+            ],
+            "Choices": [
+                {
+                    "Text": "Continue",
+                    "Target": "The Weeping Spire"
                 }
             ]
         },
@@ -122,10 +139,12 @@
         },
         "Starch Collect": {
             "Body": "<b>Collected Starch!</b><br>",
-            "Items": {
-                "Name": "Starch",
+            "Items": [
+                {
+                "Name": "starch",
                 "Amount": 1
-            },
+                }
+            ],
             "Choices": [
                 {
                     "Text": "Continue",

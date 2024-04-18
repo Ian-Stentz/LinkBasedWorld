@@ -77,17 +77,21 @@ class Player {
     addItem(item, amount) {
         if(this.inventory[item] == undefined) {
             this.inventory[item] = amount;
+            console.log(this.inventory[item]);
         }
         else {
             this.inventory[item] += amount;
+            console.log(`${item}: ${this.inventory[item]}`);
         }
     }
 
     getItemAmount(item) {
         if (this.inventory[item] != undefined) {
+            console.log(`${item}: ${this.inventory[item]}`);
             return this.inventory[item];
         }
         else {
+            console.log(`No items of ${item}`)
             return 0;
         }
     }

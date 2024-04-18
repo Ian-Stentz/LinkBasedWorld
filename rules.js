@@ -12,7 +12,7 @@ class Start extends Scene {
 class Location extends Scene {
     create(key) {
         let locationData = this.engine.storyData.Locations[key];
-        if(locationData.AltBody != undefined && this.altCondition(locationData.AltBody.Condition)) {
+        if(locationData["AltBody"] != undefined  && this.altCondition(locationData.AltBody.Condition)) {
             this.engine.show(locationData.AltBody.Text);
         } else {
             this.engine.show(locationData.Body);
@@ -38,6 +38,8 @@ class Location extends Scene {
                 return this.engine.player.checkTag("SR Visited");
             case "Starch Collected":
                 return this.engine.player.getItemAmount("starch") >= 1;
+            case "Office? Visited":
+                return this.engine.player.checkTag("Office? Visited");
             default:
                 console.log("Unknown alt body condition");
                 return false;
@@ -98,6 +100,9 @@ class Location extends Scene {
                 case "RandomExit":
                     this.engine.gotoScene(RandomExitLoc, choice.Target);
                     break;
+                case "Dialogue":
+                    this.engine.gotoScene(Dialogue, choice.Target);
+                    break;
                 default:
                     this.engine.gotoScene(Location, choice.Target);
             }
@@ -121,6 +126,9 @@ class RandomExitLoc extends Location {
                 case "RandomExit":
                     this.engine.gotoScene(RandomExitLoc, choice.Targets[choiceIndex]);
                     break;
+                case "Dialogue":
+                    this.engine.gotoScene(Dialogue, choice.Target);
+                    break;
                 default:
                     this.engine.gotoScene(Location, choice.Targets[choiceIndex]);
             }
@@ -135,6 +143,62 @@ class RandomExitLoc extends Location {
                     break;
                 default:
                     this.engine.gotoScene(Location, choice.Target);
+            }
+
+        } else {
+            this.engine.gotoScene(End);
+        }
+    }
+}
+
+class Dialogue extends Location {
+    create(key, character) {
+        let locationData
+        if(character == undefined) {
+            let initialLocation = this.engine.storyData.Dialogue[key]["InitialNode"];
+            locationData = this.engine.storyData.Dialogue[key][initialLocation];
+            this.curChar = key;
+        } else {
+            locationData = this.engine.storyData.Dialogue[character][key];
+            this.curChar = character;
+        }
+
+        if(locationData["AltBody"] != undefined && this.altCondition(locationData.AltBody.Condition)) {
+            this.engine.show(locationData.AltBody.Text);
+        } else {
+            this.engine.show(locationData.Body);
+        }
+        this.handleItems(locationData);
+
+        if(locationData.Choices !== undefined) {
+            for(let choice of locationData.Choices) {
+                if(choice.Conditions == undefined || this.conditionSatisfied(choice.Conditions)) {
+                    this.engine.addChoice(choice.Text, choice);
+                }
+            }
+        } else {
+            this.engine.addChoice("The end.")
+        }
+
+        this.handleTags(locationData);
+    }
+
+    handleChoice(choice) {
+        if(choice) {
+            this.engine.show("&gt; "+choice.Text);
+
+            //Selects Class based on choice tag
+            // This (below) is bad practice and I should move things around. However, I am currently using it for only 1 thing and I am on a bit of a time limit so I'd rather not do it. Thanks.
+            switch (choice["Type"]) {
+                case "RandomExit":
+                    this.engine.gotoScene(RandomExitLoc, choice.Target);
+                    break;
+                case "Location":
+                    this.engine.gotoScene(Location, choice.Target);
+                    break;
+                default:
+                    console.log("beep");
+                    this.engine.gotoScene(Dialogue, choice.Target, this.curChar);
             }
 
         } else {

@@ -7,7 +7,7 @@
             "Body": "<b>Office</b><br>You step out from your office building, the skyscraper towering behind you. You realized you had stayed late, but are still surprised by the night sky; the moon is looming directly above you. The city is sprawling with life, people are moving about as normal, although late as it is there's far fewer than usual. As you start to feel the chill in the air, you decide it is best to start your walk home, same as always, by taking a shortcut through the nearby alleyway.",
             "Choices": [
                 {
-                    "Text": "Take the shortcut",
+                    "Text": "take the shortcut",
                     "Target": "Alleyway Shortcut"
                 }
             ]
@@ -16,31 +16,31 @@
             "Body": "<b>Alleyway</b><br>As you pass through the shadows of the alley, the air becomes colder and the world outside sounds muted, like a large pillow has been placed between you and it. \"That's odd,\" you think to yourself, but home is so close that there's no point turning back now.",
             "Choices": [
                 {
-                    "Text": "Continue through",
+                    "Text": "continue through",
                     "Target": "Strange Road"
                 }
             ]
         },
         "Strange Road": {
-            "Body": "<b>Strange Road</b><br>Text",
+            "Body": "<b>Strange Road</b><br>As you emerge from the alleyway, it is immediately apparent that something is very, very, <i>wrong</i>. The air is much, much colder, and though you didn't notice it while walking through the alley it is now frighteningly obvious that everything has gone oh so <i>quiet</i>. You look around. What should normally be a packed city street is currently devoid of any life. Down the road you can see the city square, also seemingly abandoned.<br>Looking above, you can see the night sky is irregular, to say the least. The entire night sky is distorted, like you are looking at it from its reflection in a shattered mirror. You focus on the moon, which appears glossy, like it is a glass marble you could simply pluck from the sky.",
             "AltBody": {
-                "Text": "<b>Strange Road</b><br>Alt Text",
+                "Text": "<b>Strange Road</b><br>You're back at the strange road where you first realized the predicament you're in. Not much has changed since you've been here, still empty as usual.<br>Looking above, you can see the night sky is irregular, to say the least. The entire night sky is distorted, like you are looking at it from its reflection in a shattered mirror. You focus on the moon, which appears glossy, like it is a glass marble you could simply pluck from the sky.",
                 "Condition": "SR Visited"
             },
             "Choices": [
                 {
-                    "Text": "Set up the mirrors",
+                    "Text": "set up the mirrors",
                     "Target": "Home",
                     "Conditions": [
                         "Have Mirrors"
                     ]
                 },
                 {
-                    "Text": "Towards home?",
+                    "Text": "continue towards home",
                     "Target": "City Square"
                 },
                 {
-                    "Text": "Back to the office?",
+                    "Text": "back to the office",
                     "Target": "Alleyway?"
                 }
             ],
@@ -49,15 +49,19 @@
             ]
         },
         "Alleyway?": {
-            "Body": "<b>Alleyway?</b><br>",
+            "Body": "<b>Alleyway?</b><br>Going back through the alley, you find that you definitely won't be able to return from whence you came so easily. Even though the differences are barely perceptible, the alleyway is definitely not as it was when you passed through it at the beginning of this night. Where it was muted now, it is now perfectly silent, save for yourself. You can hear your own breathing, and if you stay quiet for long enough, the beat of your own heart. The air's colder, too. You wonder if the office building is different, too?",
+            "AltBody": {
+                "Text": "<b>Alleyway?</b><br>You definitely won't be able to return from whence you came so easily. Though it was harder for this alley to be more empty than it already was, it has somehow managed to be so, so much more empty. Where it was muted now, it is now perfectly silent, save for yourself. You can hear your own breathing, and if you stay quiet for long enough, the beat of your own heart. The air's colder, too.",
+                "Condition": "Office? Visited"
+            },
             "Choices": [
                 {
-                    "Text": "Back to the Office?",
-                    "Target": "Office?"
+                    "Text": "to the strange road",
+                    "Target": "Strange Road"
                 },
                 {
-                    "Text": "Back to Strange Road",
-                    "Target": "Strange Road"
+                    "Text": "to the office",
+                    "Target": "Office?"
                 }
             ]
         },
@@ -65,7 +69,7 @@
             "Body": "<b>Office?</b><br>",
             "Choices": [
                 {
-                    "Text": "Collect Mirror",
+                    "Text": "collect mirror",
                     "Target": "Mirror A Collection",
                     "Conditions": [
                         "Know Mirrors",
@@ -73,9 +77,12 @@
                     ] 
                 },
                 {
-                    "Text": "to Alleyway?",
+                    "Text": "to alleyway",
                     "Target": "Alleyway?"
                 }
+            ],
+            "Tags": [
+                "Office? Visited"
             ]
         },
         "Mirror A Collection": {
@@ -88,7 +95,7 @@
             ],
             "Choices": [
                 {
-                    "Text": "Continue",
+                    "Text": "continue",
                     "Target": "Office?"
                 }
             ]
@@ -103,7 +110,7 @@
             ],
             "Choices": [
                 {
-                    "Text": "Continue",
+                    "Text": "continue",
                     "Target": "The Weeping Spire"
                 }
             ]
@@ -112,11 +119,16 @@
             "Body": "<b>City Square</b><br>", 
             "Choices": [
                 {
-                    "Text": "Back to Strange Road",
+                    "Text": "talk to puddle",
+                    "Target": "Puddle",
+                    "Type": "Dialogue"
+                },
+                {
+                    "Text": "to strange road",
                     "Target": "Strange Road"
                 },
                 {
-                    "Text": "To the Winding Roads",
+                    "Text": "to the winding roads",
                     "Target": "The Winding Roads",
                     "Type": "RandomExit"
                 }
@@ -126,7 +138,7 @@
             "Body": "<b>The Winding Roads</b><br>",
             "Choices": [
                 {
-                    "Text": "You find yourself at...",
+                    "Text": "you find yourself at...",
                     "Targets": [
                         "The Bakery?",
                         "Home?",
@@ -143,14 +155,14 @@
             },
             "Choices": [
                 {
-                    "Text": "Get Starch",
+                    "Text": "get starch",
                     "Target": "Starch Collect",
                     "Conditions": [
                         "Starchless Condition"
                     ]
                 },
                 {
-                    "Text": "Return to City Square",
+                    "Text": "return to city square",
                     "Target": "City Square"
                 }
             ]
@@ -165,7 +177,7 @@
             ],
             "Choices": [
                 {
-                    "Text": "Continue",
+                    "Text": "continue",
                     "Target": "The Bakery?"
                 }
             ]
@@ -174,7 +186,7 @@
             "Body": "<b>Home?</b><br>",
             "Choices": [
                 {
-                    "Text": "Return to City Square",
+                    "Text": "return to city square",
                     "Target": "City Square"
                 }
             ]
@@ -183,7 +195,7 @@
             "Body": "<b>The Weeping Spire</b><br>",
             "Choices": [
                 {
-                    "Text": "Collect Mirror",
+                    "Text": "collect mirror",
                     "Target": "Mirror B Collection",
                     "Conditions": [
                         "Know Mirrors",
@@ -191,7 +203,7 @@
                     ] 
                 },
                 {
-                    "Text": "Return to City Square",
+                    "Text": "return to city square",
                     "Target": "City Square"
                 }
             ]
@@ -201,8 +213,59 @@
         }
     },
     "Dialogue": {
+        "Puddle": {
+            "InitialNode": "Start Dialogue",
+            "Start Dialogue": {
+                "Body": "<b>Puddle</b><br>start",
+                "Choices": [
+                    {
+                        "Text": "talk1",
+                        "Target": "talk"
+                    },
+                    {
+                        "Text": "exit",
+                        "Target": "City Square",
+                        "Type": "Location"
+                    }
+                ]
+            },
+            "talk": {
+                "Body": "<b>Puddle</b><br>talk",
+                "Choices": [
+                    {
+                        "Text": "exit",
+                        "Target": "City Square",
+                        "Type": "Location"
+                    }
+                ]
+            }
+        },
         "Stranger": {
-
+            "InitialNode": "Start Dialogue",
+            "Start Dialogue": {
+                "Body": "<b>The Stranger</b><br>start",
+                "Choices": [
+                    {
+                        "Text": "talk1",
+                        "Target": "talk"
+                    },
+                    {
+                        "Text": "exit",
+                        "Target": "City Square",
+                        "Type": "Location"
+                    }
+                ]
+            },
+            "talk": {
+                "Body": "<b>The Stranger</b><br>talk",
+                "Choices": [
+                    {
+                        "Text": "exit",
+                        "Target": "City Square",
+                        "Type": "Location"
+                    }
+                ]
+            }
         }
     }
 }

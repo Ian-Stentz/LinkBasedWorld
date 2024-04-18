@@ -25,9 +25,10 @@ class Engine {
         );
     }
 
-    gotoScene(sceneClass, data) {
+    gotoScene(sceneClass, data, character = undefined) {
         this.scene = new sceneClass(this);
-        this.scene.create(data);
+        console.log(character);
+        this.scene.create(data, character);
     }
 
     addChoice(action, data) {

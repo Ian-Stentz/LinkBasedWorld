@@ -13,7 +13,7 @@
             ]
         },
         "Alleyway Shortcut": {
-            "Body": "<b>Alleyway</b><br>",
+            "Body": "<b>Alleyway</b><br>As you pass through the shadows of the alley, the air becomes colder and the world outside sounds muted, like a large pillow has been placed between you and it. \"That's odd,\" you think to yourself, but home is so close that there's no point turning back now.",
             "Choices": [
                 {
                     "Text": "Continue through",
@@ -22,12 +22,18 @@
             ]
         },
         "Strange Road": {
-            "Body": "<b>Strange Road</b><br>",
+            "Body": "<b>Strange Road</b><br>Text",
+            "AltBody": {
+                "Text": "<b>Strange Road</b><br>Alt Text",
+                "Condition": "SR Visited"
+            },
             "Choices": [
                 {
                     "Text": "Set up the mirrors",
                     "Target": "Home",
-                    "Condition": "Have Mirrors"
+                    "Conditions": [
+                        "Have Mirrors"
+                    ]
                 },
                 {
                     "Text": "Towards home?",
@@ -37,6 +43,9 @@
                     "Text": "Back to the office?",
                     "Target": "Alleyway?"
                 }
+            ],
+            "Tags": [
+                "SR Visited"
             ]
         },
         "Alleyway?": {
@@ -57,8 +66,11 @@
             "Choices": [
                 {
                     "Text": "Collect Mirror",
-                    "Target": "Mirror Collection",
-                    "Condition": "Know Mirrors" 
+                    "Target": "Mirror A Collection",
+                    "Conditions": [
+                        "Know Mirrors",
+                        "No Mirror A"
+                    ] 
                 },
                 {
                     "Text": "to Alleyway?",
@@ -125,11 +137,17 @@
         },
         "The Bakery?": {
             "Body": "<b>Bakery</b><br>",
+            "AltBody": {
+                "Text": "<b>Bakery</b><br>",
+                "Condition": "Starch Collected"
+            },
             "Choices": [
                 {
                     "Text": "Get Starch",
                     "Target": "Starch Collect",
-                    "Condition": "Starchless Condition"
+                    "Conditions": [
+                        "Starchless Condition"
+                    ]
                 },
                 {
                     "Text": "Return to City Square",
@@ -164,6 +182,14 @@
         "The Weeping Spire": {
             "Body": "<b>The Weeping Spire</b><br>",
             "Choices": [
+                {
+                    "Text": "Collect Mirror",
+                    "Target": "Mirror B Collection",
+                    "Conditions": [
+                        "Know Mirrors",
+                        "No Mirror B"
+                    ] 
+                },
                 {
                     "Text": "Return to City Square",
                     "Target": "City Square"

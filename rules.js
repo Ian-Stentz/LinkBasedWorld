@@ -12,28 +12,57 @@ class Start extends Scene {
 class Location extends Scene {
     create(key) {
         let locationData = this.engine.storyData.Locations[key];
-        this.engine.show(locationData.Body);
+        if(locationData.AltBody != undefined && this.altCondition(locationData.AltBody.Condition)) {
+            this.engine.show(locationData.AltBody.Text);
+        } else {
+            this.engine.show(locationData.Body);
+        }
         this.handleItems(locationData);
-        this.handleTags(locationData);
 
         if(locationData.Choices !== undefined) {
             for(let choice of locationData.Choices) {
-                if(choice.Condition == undefined || this.conditionSatisfied(choice.Condition)) {
+                if(choice.Conditions == undefined || this.conditionSatisfied(choice.Conditions)) {
                     this.engine.addChoice(choice.Text, choice);
                 }
             }
         } else {
             this.engine.addChoice("The end.")
         }
+
+        this.handleTags(locationData);
     }
 
+    altCondition(condition) {
+        switch (condition) {
+            case "SR Visited":
+                return this.engine.player.checkTag("SR Visited");
+            case "Starch Collected":
+                return this.engine.player.getItemAmount("starch") >= 1;
+            default:
+                console.log("Unknown alt body condition");
+                return false;
+        }
+    }
 
-    conditionSatisfied(condition) {
+    conditionSatisfied(conditions) {
+        for (let condition of conditions) {
+            if(!this.checkCondition(condition)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    checkCondition(condition) {
         switch(condition) {
             case "Have Mirrors":
                 return this.engine.player.getItemAmount("mirrora") >= 1 && this.engine.player.getItemAmount("mirrorb") >= 1;
             case "Know Mirrors":
                 return this.engine.player.checkTag("Know Mirrors");
+            case "No Mirror A":
+                return this.engine.player.getItemAmount("mirrora") == 0;
+            case "No Mirror B":
+                return this.engine.player.getItemAmount("mirrorb") == 0;
             case "Starchless Condition":
                 //console.log(this.engine.player.getItemAmount("starch"));
                 return this.engine.player.getItemAmount("starch") == 0;
@@ -52,7 +81,7 @@ class Location extends Scene {
     }
 
     handleTags(locationData) {
-        if(locationData["Tags"] != undefined) {
+        if(locationData.Tags != undefined) {
             for(let tag of locationData.Tags) {
                 this.engine.player.addTag(tag);
             }

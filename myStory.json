@@ -121,7 +121,18 @@
                 {
                     "Text": "talk to puddle",
                     "Target": "Puddle",
-                    "Type": "Dialogue"
+                    "Type": "Dialogue",
+                    "Conditions": [
+                        "Starch not given"
+                    ]
+                },
+                {
+                    "Text": "talk to stanger",
+                    "Target": "Stranger",
+                    "Type": "Dialogue",
+                    "Conditions": [
+                        "Starch given"
+                    ]
                 },
                 {
                     "Text": "to strange road",
@@ -135,7 +146,7 @@
             ]
         },
         "The Winding Roads": {
-            "Body": "<b>The Winding Roads</b><br>Space his seems to be warping, twisting. As you walk along this road you feel as if you at are at the whim of this world, unable to make sense of direction. Normally your home should be just beyond this road, as well as that bakery that you visit so frequently. Now, though, you can't seem to find any sense in these paths, not even the way back. Oh well, best to continue on and see where it takes you.",
+            "Body": "<b>The Winding Roads</b><br>Space here seems to be warping, twisting. As you walk along this road you feel as if you at are at the whim of this world, unable to make sense of direction. Normally your home should be just beyond this road, as well as that bakery that you visit so frequently. Now, though, you can't seem to find any sense in these paths, not even the way back. Oh well, best to continue on and see where it takes you.",
             "Choices": [
                 {
                     "Text": "you find yourself at...",
@@ -234,10 +245,35 @@
                 "Body": "<b>Puddle</b><br>talk",
                 "Choices": [
                     {
+                        "Text": "give starch",
+                        "Target": "Give Starch",
+                        "Conditions": [
+                            "Have starch"
+                        ]
+                    },
+                    {
                         "Text": "exit",
                         "Target": "City Square",
                         "Type": "Location"
                     }
+                ]
+            },
+            "Give Starch": {
+                "Body": "<b>Puddle</b><br>talk",
+                "Choices": [
+                    {
+                        "Text": "talk more",
+                        "Target": "Stranger",
+                        "Type": "NewDialogue"
+                    },
+                    {
+                        "Text": "exit",
+                        "Target": "City Square",
+                        "Type": "Location"
+                    }
+                ],
+                "Tags": [
+                    "Starch given"
                 ]
             }
         },
@@ -255,6 +291,9 @@
                         "Target": "City Square",
                         "Type": "Location"
                     }
+                ],
+                "Tags": [
+                    "Know Mirrors"
                 ]
             },
             "talk": {

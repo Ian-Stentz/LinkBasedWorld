@@ -65,6 +65,13 @@ class Location extends Scene {
                 return this.engine.player.getItemAmount("mirrora") == 0;
             case "No Mirror B":
                 return this.engine.player.getItemAmount("mirrorb") == 0;
+            case "Starch not given":
+                return !(this.engine.player.checkTag("Starch given"));
+            case "Starch given":
+                return this.engine.player.checkTag("Starch given");
+            case "Have starch":
+                //console.log(this.engine.player.getItemAmount("starch"));
+                return this.engine.player.getItemAmount("starch") > 0;
             case "Starchless Condition":
                 //console.log(this.engine.player.getItemAmount("starch"));
                 return this.engine.player.getItemAmount("starch") == 0;
@@ -195,6 +202,9 @@ class Dialogue extends Location {
                     break;
                 case "Location":
                     this.engine.gotoScene(Location, choice.Target);
+                    break;
+                case "NewDialogue":
+                    this.engine.gotoScene(Dialogue, choice.Target);
                     break;
                 default:
                     console.log("beep");

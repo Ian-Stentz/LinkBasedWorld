@@ -135,27 +135,28 @@
             ]
         },
         "The Winding Roads": {
-            "Body": "<b>The Winding Roads</b><br>",
+            "Body": "<b>The Winding Roads</b><br>Space his seems to be warping, twisting. As you walk along this road you feel as if you at are at the whim of this world, unable to make sense of direction. Normally your home should be just beyond this road, as well as that bakery that you visit so frequently. Now, though, you can't seem to find any sense in these paths, not even the way back. Oh well, best to continue on and see where it takes you.",
             "Choices": [
                 {
                     "Text": "you find yourself at...",
                     "Targets": [
                         "The Bakery?",
                         "Home?",
-                        "The Weeping Spire"
+                        "The Weeping Spire",
+                        "City Square"
                     ]
                 }
             ]
         },
         "The Bakery?": {
-            "Body": "<b>Bakery</b><br>Text",
+            "Body": "<b>Bakery</b><br>The bakery is quiet, unnervingly so. The air is still, dust lingers in the air, the light bouncing and refracting off of the particles. ",
             "AltBody": {
                 "Text": "<b>Bakery</b><br>Alt Text",
                 "Condition": "Starch Collected"
             },
             "Choices": [
                 {
-                    "Text": "get starch",
+                    "Text": "take starch",
                     "Target": "Starch Collect",
                     "Conditions": [
                         "Starchless Condition"

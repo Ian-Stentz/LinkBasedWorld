@@ -29,14 +29,6 @@
             },
             "Choices": [
                 {
-                    "Text": "set up the mirrors",
-                    "Target": "Home",
-                    "Conditions": [
-                        "Have Mirror A",
-                        "Have Mirror B"
-                    ]
-                },
-                {
                     "Text": "continue towards home",
                     "Target": "City Square"
                 },
@@ -57,6 +49,14 @@
             },
             "Choices": [
                 {
+                    "Text": "set up the mirrors",
+                    "Target": "Home",
+                    "Conditions": [
+                        "Have Mirror A",
+                        "Have Mirror B"
+                    ]
+                },
+                {
                     "Text": "to the strange road",
                     "Target": "Strange Road"
                 },
@@ -69,7 +69,7 @@
         "Office?": {
             "Body": "<b>Office?</b><br>You were just here, a few minutes ago, and everything was normal. That's why you can hardly believe what it looks like now. The Office is shattered outwards in every direction, shards suspended in midair. It's like it was made out of glass and a bubble burst from the center. Glass and metal hangs, seemingly weightlessly, in midair. A very large shard of glass is nearby, about your size. You can see yourself in its reflection.",
             "AltBody": {
-                "Text": "<b>Office?</b><br>You were just here, a few minutes ago, and everything was normal. That's why you can hardly believe what it looks like now. The Office is shattered outwards in every direction, shards suspended in midair. It's like it was made out of glass and a bubble burst from the center. Glass and metal hangs, seemingly weightlessly, in midair. A very large shard of glass is nearby, about your size. You can see yourself in its reflection.",
+                "Text": "<b>Office?</b><br>You were just here, a few minutes ago, and everything was normal. That's why you can hardly believe what it looks like now. The Office is shattered outwards in every direction, shards suspended in midair. It's like it was made out of glass and a bubble burst from the center. Glass and metal hangs, seemingly weightlessly, in midair.",
                 "Condition": "Have Mirror A"
             },
             "Choices": [
@@ -123,7 +123,7 @@
         "City Square": {
             "Body": "<b>City Square</b><br>The city square, which even at this time of night should be bustling as the hub of the city, is completely and utterly empty. It's a strange feeling as a city dweller - the realization that you can walk in, around, and over the asphalt intersection, and not fear being hit by a car. You look down the road, expecting to see the way to your house. Instead, the road along that path is twisted into the air, upside down, to one side, to the other, branching, splitting, converging, convening, flowing, infinitely expanding. It does not seem to have any abidance for gravity, nor any care to start obeying the laws. As you step into the middle of the intersection, you flinch when you notice something moving from the bottom corner of your eyes. You nearly leap backwards, only to find that there's no one there. Just a strangely dark puddle, a deep indigo hue, bubbling at the perfect centerpoint of the intersection. This place seems to be growing stranger by the minute.", 
             "AltBody": {
-                "Text":"The city square, still as empty as the last... You've lost track of how many times you've been taken back here by those damnable roads. In the center of the interesection is the stranger, staying very (but not perfectly) still as it waits for you.",
+                "Text":"<b>City Square</b><br>The city square, still as empty as the last... You've lost track of how many times you've been taken back here by those damnable roads. In the center of the interesection is the stranger, staying very (but not perfectly) still as it waits for you.",
                 "Condition": "Starch given"
             },
             "Choices": [
@@ -144,13 +144,13 @@
                     ]
                 },
                 {
-                    "Text": "to strange road",
-                    "Target": "Strange Road"
-                },
-                {
                     "Text": "to the winding roads",
                     "Target": "The Winding Roads",
                     "Type": "RandomExit"
+                },
+                {
+                    "Text": "to strange road",
+                    "Target": "Strange Road"
                 }
             ]
         },
@@ -305,7 +305,7 @@
                         ]
                     },
                     {
-                        "Text": "You depart to the city square in search of a thickener.",
+                        "Text": "you depart to the city square in search of a thickener",
                         "Target": "City Square",
                         "Type": "Location"
                     }
@@ -374,7 +374,7 @@
                 ]
             },
             "talk": {
-                "Body": "<b>The Stranger</b><br>\"Of course,\" the stranger replies, enthusiastically, \"but first you must understand a little bit about where you are.\" The stranger repositions itself, now sort of lied back, relaxing before it explains. \"You must have noticed by now how similar this place is to where you came from. Any sci-fi nerd could have guessed 'mirror dimension!' But they'd be more right then they'd know. Everything here works in reflection, refraction. But like a reflection, things are not quite right. Reversed, reflected, mirrored, as it were. It follows then, that in order to return home, you must be able to see true again. There is a setup of mirrors called a non-reversing mirror, or more commonly a true mirror. It involves placing two mirrors angled towards each other so the light bounces from you, to one, to the other, back to you. In doing so it flips the image of yourself twice, resulting in it being your true image again, the one which the world around you sees, not the mirrored version only you've ever seen. You need to create a true mirror large enough for you to set up back at the road where you first stepped into this world from, and then step back through it. If you do that, you will return home. Problem is, you need to find two you-sized mirrors, which is easier said then done.\" The stranger leans in, grinning fervently. \"So good luck.\"",
+                "Body": "<b>The Stranger</b><br>\"Of course,\" the stranger replies, enthusiastically, \"but first you must understand a little bit about where you are.\" The stranger repositions itself, now sort of lied back, relaxing before it explains. \"You must have noticed by now how similar this place is to where you came from. Any sci-fi nerd could have guessed 'mirror dimension!' But they'd be more right then they'd know. Everything here works in reflection, refraction. But like a reflection, things are not quite right. Reversed, reflected, mirrored, as it were. It follows then, that in order to return home, you must be able to see true again. There is a setup of mirrors called a non-reversing mirror, or more commonly a true mirror. It involves placing two mirrors angled towards each other so the light bounces from you, to one, to the other, back to you. In doing so it flips the image of yourself twice, resulting in it being your true image again, the one which the world around you sees, not the mirrored version only you've ever seen. You need to create a true mirror large enough for you to set up back at the alleyway where you first stepped into this world from, and then step back through it. If you do that, you will return home. Problem is, you need to find two you-sized mirrors, which is easier said then done.\" The stranger leans in, grinning fervently. \"So good luck.\"",
                 "Choices": [
                     {
                         "Text": "exit",

@@ -55,7 +55,7 @@ class Location extends Scene {
                 return !(this.engine.player.checkTag("Talked to puddle"));
             case "Have Mirror A":
                 return this.engine.player.getItemAmount("mirrora") >= 1
-            case "Have Mirror A":
+            case "Have Mirror B":
                 return this.engine.player.getItemAmount("mirrorb") >= 1;
             case "Know Mirrors":
                 return this.engine.player.checkTag("Know Mirrors");
@@ -170,7 +170,7 @@ class Dialogue extends Location {
             this.curChar = character;
         }
 
-        if(locationData["AltBody"] != undefined && this.altCondition(locationData.AltBody.Condition)) {
+        if(locationData["AltBody"] != undefined && this.checkCondition(locationData.AltBody.Condition)) {
             this.engine.show(locationData.AltBody.Text);
         } else {
             this.engine.show(locationData.Body);

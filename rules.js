@@ -12,7 +12,7 @@ class Start extends Scene {
 class Location extends Scene {
     create(key) {
         let locationData = this.engine.storyData.Locations[key];
-        if(locationData["AltBody"] != undefined  && this.altCondition(locationData.AltBody.Condition)) {
+        if(locationData["AltBody"] != undefined  && this.checkCondition(locationData.AltBody.Condition)) {
             this.engine.show(locationData.AltBody.Text);
         } else {
             this.engine.show(locationData.Body);
@@ -32,20 +32,6 @@ class Location extends Scene {
         this.handleTags(locationData);
     }
 
-    altCondition(condition) {
-        switch (condition) {
-            case "SR Visited":
-                return this.engine.player.checkTag("SR Visited");
-            case "Starch Collected":
-                return this.engine.player.getItemAmount("starch") >= 1;
-            case "Office? Visited":
-                return this.engine.player.checkTag("Office? Visited");
-            default:
-                console.log("Unknown alt body condition");
-                return false;
-        }
-    }
-
     conditionSatisfied(conditions) {
         for (let condition of conditions) {
             if(!this.checkCondition(condition)) {
@@ -57,10 +43,24 @@ class Location extends Scene {
 
     checkCondition(condition) {
         switch(condition) {
-            case "Have Mirrors":
-                return this.engine.player.getItemAmount("mirrora") >= 1 && this.engine.player.getItemAmount("mirrorb") >= 1;
+            case "SR Visited":
+                return this.engine.player.checkTag("SR Visited");
+            case "Starch Collected":
+                return this.engine.player.getItemAmount("starch") >= 1;
+            case "Office? Visited":
+                return this.engine.player.checkTag("Office? Visited");
+            case "Talked to puddle":
+                return this.engine.player.checkTag("Talked to puddle");
+            case "Not talked to puddle":
+                return !(this.engine.player.checkTag("Talked to puddle"));
+            case "Have Mirror A":
+                return this.engine.player.getItemAmount("mirrora") >= 1
+            case "Have Mirror A":
+                return this.engine.player.getItemAmount("mirrorb") >= 1;
             case "Know Mirrors":
                 return this.engine.player.checkTag("Know Mirrors");
+            case "Talked to stranger":
+                return this.engine.player.checkTag("Talked to stranger");
             case "No Mirror A":
                 return this.engine.player.getItemAmount("mirrora") == 0;
             case "No Mirror B":
